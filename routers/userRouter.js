@@ -31,7 +31,7 @@ router.post('/login', async(req, res) => {
         // 从req.session.redirect中获取要回到的页面地址
         let redirect = req.session.redirect || '/'
             // 跳转
-        res.redirect(redirect)
+        res.redirect(redirect);
         res.send('登录成功')
     } else {
         // 不通过，用户名或密码不正确

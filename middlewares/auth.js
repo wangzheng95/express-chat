@@ -9,6 +9,7 @@ module.exports = (req, res, next) => {
         // 将当前的url地址存起来
         console.log(req.url);
         req.session.redirect = req.url
+
         res.redirect('/login')
     }
 }
