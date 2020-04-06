@@ -1,5 +1,9 @@
 // 引入express
 const express = require('express');
+// 引入dotenv
+const dotenv = require('dotenv')
+    // 配置dotenv
+dotenv.config();
 // 引入wocket.io
 const socketIo = require('socket.io')
     // 引入express-async-errors
@@ -28,7 +32,7 @@ app.use(express.urlencoded({ extended: true }))
  * 注意：在开发工作中，修改了代码，session 就会宠重新开始
  */
 app.use(session({
-    secret: "adggagsfgsgsergsdfg",
+    secret: process.env.SESSION_SECRET,
     resave: false, //是否每次请求时都去更新有效时间
     saveUninitialized: true //是否初始化时就设置一次
 }));
@@ -83,5 +87,4 @@ io.on("connection", socket => {
             message: data.message
         })
     })
-
 })
