@@ -29,10 +29,17 @@ router.post('/login', async(req, res) => {
 
         // 1.得知道成功以后要去的页面
         // 从req.session.redirect中获取要回到的页面地址
-        let redirect = req.session.redirect || '/'
-            // 跳转
-        res.redirect(redirect);
-        res.send('登录成功')
+        // let redirect = req.session.redirect || '/'
+        //     // 跳转
+        // res.redirect(redirect);
+        // res.send('登录成功')
+
+
+        // B方案
+        // console.log(req.originalUrl);
+
+        res.redirect(req.query.redirect);
+
     } else {
         // 不通过，用户名或密码不正确
         throw new Error('用户名或密码不正确')

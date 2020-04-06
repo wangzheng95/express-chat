@@ -11,18 +11,21 @@ router.get("/", (req, res) => {
 
 // GET  /chatroom 聊天室
 router.get('/chatroom', auth, (req, res) => {
-    res.render('chatroom')
+    res.render('chatroom', { username: req.auth.username })
 })
 
 
 // GET /login   登陆页面
 router.get('/login', (req, res) => {
-    res.render('login')
+    // 可以获取？传参
+    const redirect = req.query.redirect || '/'
+
+    res.render('login', { redirect })
 })
 
 // GET /posts  帖子列表页面
 router.get('/posts', auth, (req, res) => {
-    res.render('post/index')
+    res.render('post/index', )
 })
 
 
